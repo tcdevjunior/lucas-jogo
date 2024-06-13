@@ -9,6 +9,8 @@ var divContador = document.getElementById("contador")
 var numero_sorteado = sorteiaNumero(1, 100)
 var contador = 0
 
+console.log(numero_sorteado);
+
 // Função que verifica o número 
 function verificaNumero(chute, numero_sorteado) {
 
@@ -32,13 +34,16 @@ function verificaNumero(chute, numero_sorteado) {
     }
 }
 
+// Para representar lista a gente utiliza colchetes - []
+var listaDeJogadores = []
+
 // Função de jogo
 function enter() {
 
     var chute = document.getElementById("chute").value
     contador++
 
-    while (contador <= 5) {
+    while (contador <= 5 && chute != numero_sorteado) {
         // Aqui eu to chamando a função de verificar o número
         verificaNumero(chute, numero_sorteado)
 
@@ -54,10 +59,31 @@ function enter() {
     }
 
     divResposta.innerHTML = ""
+    divTabela.innerHTML = ""
+    let nome = document.getElementById("nome").value
 
-    divResposta.innerHTML += `
-        <p>Você perdeu! O número era ${numero_sorteado}</p>
-    `
+    if(chute != numero_sorteado){
+        divResposta.innerHTML += `
+            <p>Você perdeu! O número era ${numero_sorteado}</p>
+        `
+    }else{
+        listaDeJogadores.push({ nome, contador })
+
+        for(let i = 0; i < listaDeJogadores.length; i++){
+            divTabela.innerHTML += `
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>${listaDeJogadores[i].nome}</th>
+                            <th>${listaDeJogadores[i].contador}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            `
+        }
+    }
+
+    
 
     return false
 }
