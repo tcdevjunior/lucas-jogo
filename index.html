@@ -19,17 +19,32 @@
         </label>
 
         <label for="chute">
-            <span>Chute um número aqui...</span>
+            <span>Chute um número entre 1 e 1000</span>
             <input type="number" name="chute" id="chute">
         </label>
         <button type="submit" class="codepen-button">
             <span>Confirmar</span>
         </button>
+
+        <button class="codepen-button" onclick="geraNovoNumero()" type="button">
+            <span>Gerar outro número</span>
+        </button>
     </form>
     <div id="resposta"></div>
     <div id="contador"></div>
 
-    <div id="divTabela"></div>
+    <div id="container-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Jogador</th>
+                    <th>Quantidade de tentativas</th>
+                </tr>
+            </thead>
+            <tbody id="divTabela"></tbody>
+        </table>
+    </div>
+
 </body>
 
 </html>

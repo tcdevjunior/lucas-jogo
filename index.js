@@ -6,7 +6,7 @@ function sorteiaNumero(min, max) {
 // Ele está pegando o elemento que tem o id = resposta
 var divResposta = document.getElementById("resposta")
 var divContador = document.getElementById("contador")
-var numero_sorteado = sorteiaNumero(1, 100)
+var numero_sorteado = sorteiaNumero(1, 1000)
 var contador = 0
 
 console.log(numero_sorteado);
@@ -43,7 +43,7 @@ function enter() {
     var chute = document.getElementById("chute").value
     contador++
 
-    while (contador <= 5 && chute != numero_sorteado) {
+    while (contador <= 10 && chute != numero_sorteado) {
         // Aqui eu to chamando a função de verificar o número
         verificaNumero(chute, numero_sorteado)
 
@@ -62,14 +62,14 @@ function enter() {
     divTabela.innerHTML = ""
     let nome = document.getElementById("nome").value
 
-    if(chute != numero_sorteado){
+    if (chute != numero_sorteado) {
         divResposta.innerHTML += `
             <p>Você perdeu! O número era ${numero_sorteado}</p>
         `
-    }else{
+    } else {
         listaDeJogadores.push({ nome, contador })
 
-        for(let i = 0; i < listaDeJogadores.length; i++){
+        for (let i = 0; i < listaDeJogadores.length; i++) {
             divTabela.innerHTML += `
                 <table>
                     <tbody>
@@ -83,7 +83,11 @@ function enter() {
         }
     }
 
-    
-
     return false
+}
+
+function geraNovoNumero() {
+    numero_sorteado = sorteiaNumero(1, 1000)
+    contador = 0
+    console.log(numero_sorteado);
 }
